@@ -1,0 +1,246 @@
+﻿*{
+
+    padding: 0px;
+    margin:0px;
+
+}
+
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    
+    background-color: #F2F5F2;
+}
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Carousel */
+.carousel-caption p {
+    font-size: 20px;
+    line-height: 1.4;
+}
+
+/* Make .svg files in the carousel display properly in older browsers */
+.carousel-inner .item img[src$=".svg"] {
+    width: 100%;
+}
+
+/* QR code generator */
+#qrCode {
+    margin: 15px;
+}
+
+/* Hide/rearrange for smaller screens */
+@media screen and (max-width: 767px) {
+    /* Hide captions */
+    .carousel-caption {
+        display: none;
+    }
+}
+
+.espacio{
+
+    margin-right: 15px;
+    border-radius: 15px;
+}
+
+.portada {
+    background-color: #FFF;
+    padding-left: 0px;
+    padding-right: 0px;
+    border-bottom: solid 2px #99BD38;
+    margin-top:0px;
+}
+
+.portadacontainer{
+
+    margin-top:0px;
+
+}
+
+.imagen{
+    width: 20%;
+    border-radius:10px;
+}
+
+imagendiv{
+
+    width:20px;
+    height:20px;
+    border-radius:100px;
+
+}
+
+.opciones {
+    color: #fff;
+    font-size: 18px;
+    border-radius:10px;
+    margin-right: 10px;
+}
+
+.cabezeras{
+
+    margin-top: 25px;
+    margin-bottom: 15px;
+}
+
+.verde {
+    background-color: #9ABE3A;
+    margin-top: 40px;
+    padding-left: 10px;
+    border-radius: 10px;
+    
+}
+
+.verde :hover{
+
+    margin-left:-30px;
+    margin-right: -30px;
+
+}
+
+
+.azul {
+    background-color: #05ADDC;
+    margin-right:10px;
+    padding-left: 10px;
+    margin-left:10px;
+    border-radius: 10px;
+}
+
+.azul:hover {
+        background-color: #014066;
+        cursor:pointer;
+}
+
+
+.azul-puro {
+    background-color: #014066;
+    margin-top: 55px;
+    padding-left: 10px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.azul-puro :hover {
+    margin-left: -30px;
+    margin-right: -30px;
+}
+
+.blanco {
+    background-color: #fff;
+    margin-top: 40px;
+    padding-left: 10px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.blanco :hover {
+    margin-left: -30px;
+    margin-right: -30px;
+}
+
+.blanco p{
+
+    color:#424242;
+}
+
+    .blanco h2 {
+        color: #424242;
+    }
+
+.titulos{
+
+    color:#fff;
+}
+
+
+
+.textos{
+
+    color:#fff;
+}
+
+
+
+.cajas {
+    background-color: #05ADDC;
+    border: solid 1px #fff;
+    padding-bottom: 20px;
+    margin-top: 20px;
+    float:left;
+    margin-right: 1px;
+    margin-left: 1px;
+    border-radius: 5px;
+    
+}
+
+
+
+    .cajas:hover {
+        background-color: #014066;
+        cursor:pointer;
+    }
+
+
+
+.pie {
+    background-color: #343a40;
+    margin-top: 40px;
+  
+    margin-bottom:-20px;
+   
+}
+
+.espaciotitulo {
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+.tablacliente {
+    border-radius: 10px;
+    background-color: #fff;
+    
+}
+
+.espaciotabla {
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.divproyecto {
+    border-top: 5px solid #014066;
+    border-radius: 8px;
+    background-color: #FFF;
+    border-bottom: 5px solid #014066;
+}
+
+.divproyectodetalles {
+    border-radius: 8px;
+    background-color: #FFF;
+    border-left: 5px solid #014066;
+}
+
+.textoblanco{
+
+    color:white;
+}
+
+.slaider:hover {
+
+    opacity : 1;
+    cursor:pointer;
+    background-color: black;
+
+
+
+}
+
+.slaider {
+    opacity:0.5;
+}

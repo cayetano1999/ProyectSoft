@@ -1,0 +1,208 @@
+﻿@model ProjectSoft.ViewModels.ClienteProyectosViewModel
+@{
+    ViewData["Title"] = "Detalles";
+    double suma = 0;
+}
+
+<div class=" col-sm-12 portada portadacontainer">
+    <br />
+    <h2 class="text-center"><i class="fa fa-info-circle"></i> Detalles del Cliente</h2>
+    <p class="text-center text-info">Oberva información detallada del cliente.</p>
+
+</div>
+
+<br />
+<center>
+    <form asp-action="RegistrarCliente" asp-controller="Clientes" class="disabled" method="post" enctype="multipart/form-data">
+        <br />
+
+        <div class="col-sm-8 espaciotitulo" style="background-color:white; border-radius:10px; box-shadow:initial; border-top: 2px solid #424242; border-bottom: 2px solid #424242;">
+            <center>
+                @Html.Partial("_AlertPartial")
+
+                <br />
+
+                <img src="~/FotosPerfilClientes/@Model.Cliente.Foto" style="width:10%; border-radius:100px;" class="embed-responsive" />
+                <h2 class="text-center">@Model.Cliente.Nombre</h2>
+                <br />
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+
+                        <label for="inputEmail4" class="text-dark"> <strong> Naturaleza del Cliente</strong> </label>
+
+                        <input asp-for="Cliente.Naturaleza" disabled class="form-control border-info disabled" />
+
+
+                        <span asp-validation-for="Cliente.Naturaleza" class="text-danger"></span>
+
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputPassword4" class="text-dark"><strong> Dirección</strong></label>
+                        <input asp-for="Cliente.Direccion" disabled type="text" class="form-control border-info border-info disabled" id="Nombre" placeholder="Nombre">
+
+                    </div>
+                </div>
+
+
+
+
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputEmail4" class="text-dark"><strong> Télefono</strong></label>
+                        <input asp-for="Cliente.Telefono" disabled type="tel" class="form-control border-info disabled" maxlength="10" id="telefono" placeholder="8092456211">
+
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputPassword4" class="text-dark"><strong> Email</strong></label>
+                        <input asp-for="Cliente.Email" disabled type="email" class="form-control border-info disabled" id="email" placeholder="nombre@dominio.com">
+
+                    </div>
+                </div>
+
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputPassword4" class="text-dark"><strong> Identificación</strong></label>
+                        <input asp-for="Cliente.Identificacion" disabled class="form-control border-info disabled" placeholder="">
+
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputPassword4" class="text-dark"><strong> Tipo de Cliente</strong></label>
+                        <input asp-for="Cliente.TipoCliente" disabled class="form-control border-info disabled">
+
+
+
+
+                    </div>
+                </div>
+
+            </center>
+            <br />
+            <hr />
+            <h4 class="text-info"> <i class="fa fa-folder"></i> Proyectos de @Model.Cliente.Nombre   [ @Model.ProyectoInfor.Count() ]</h4>
+
+
+            <table class="table table-hover tablacliente table-responsive-lg ">
+
+
+                <tr>
+
+                    <th>
+                        Proyecto
+                    </th>
+
+
+                    <th>
+                        Costo
+                    </th>
+
+                    <th>
+                        Categoria
+                    </th>
+
+                    <th>
+                        Creador
+                    </th>
+
+                    <th>
+                        Duración
+                    </th>
+
+                    <th>
+                        Ver
+                    </th>
+
+                </tr>
+
+                @foreach (var item in Model.ProyectoInfor)
+                {
+
+                    <tr>
+                        <td>
+                            <a asp-action="Detalles" asp-controller="Proyectos" asp-route-Id="@item.Id"> <i class="fa fa-folder-open"></i> @Html.DisplayFor(p => item.Nombre)</a>
+                        </td>
+
+                        <td>
+                            @Convert.ToDouble(item.Costo).ToString("N")  
+                        </td>
+
+                        <td>
+                            @if (item.Categoria.Estado == "Eliminada")
+                            {
+                                <a class="text-danger"> <i class="fa fa-remove"></i> @Html.DisplayFor(m => item.Categoria.Nombre)</a>
+                            }
+                            else
+                            {
+                                @Html.DisplayFor(m => item.Categoria.Nombre)
+                            }
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(p => item.Creador)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(p => item.Duracion)
+                        </td>
+
+                        <td>
+                            <a asp-action="Detalles" asp-controller="Proyectos" asp-route-Id="@item.Id" class="btn btn-sm btn-success"> <i class=" fa fa-info"></i> </a>
+                        </td>
+
+                    </tr>
+                }
+
+            </table>
+
+            
+
+
+            @if (Model.ProyectoInfor.Count() == 0)
+            {
+                <div class="alert alert-info">
+
+                    Este cliente no tiene proyectos.
+
+                </div>
+
+
+            }
+
+                <div class="form-row">
+
+
+                    <div class="form-group col-md-6">
+
+                        @if (suma == 0)
+                        {
+                            suma = Model.ProyectoInfor.Sum(p => p.Costo);
+                        }
+                        
+
+                        <h5>Cantidad Invertida en Proyectos: <strong class="text-info"> <i class="fa fa-money"></i> @Convert.ToDouble(suma).ToString("N")</strong> </h5>
+
+
+
+                    </div>
+
+                    
+
+                </div>
+            <br />
+
+        </div>
+
+
+
+        
+        
+
+
+    </form>
+    <br />
+    
+</center>
+@Html.Partial("_Footer");
+
+

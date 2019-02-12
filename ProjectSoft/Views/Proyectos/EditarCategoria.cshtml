@@ -1,0 +1,41 @@
+﻿@model ProjectSoft.Models.Categoria
+@{
+    ViewData["Title"] = "Editar Categoria";
+}
+
+<div class=" col-sm-12 portada portadacontainer ">
+    <br />
+    <h2 class="text-center"><i class="fa fa-pencil"></i> Editar Categoria</h2>
+    <p class="text-center text-info">Edita la categoria de proyecto</p>
+
+</div>
+
+<br />
+<hr />
+<form asp-action="EditarCategoria" asp-controller="Proyectos" method="post">
+
+    <div class="col-sm-12 espaciotitulo">
+        <div class="form-row">
+
+            <div class="form-group col-md-4">
+                <label for="categoria" class="text-dark"><strong> Nombre de Categoria</strong></label>
+                <input asp-for="Nombre" type="text" class="form-control border-info" maxlength="50" id="categoria">
+                <span asp-validation-for="Nombre"></span>
+
+                <input asp-for="Id" hidden />
+                <input asp-for="Usuario" hidden/>
+            </div>
+
+
+
+        </div>
+        <div class="form-row">
+            <a asp-action="Categoria" asp-controller="Proyectos" class="btn btn-secondary espacio"> <i class="fa fa-close"></i> Cancelar</a>
+            <button type="submit" class="btn btn-primary espacio"> <i class="fa fa-pencil"></i> Editar Categoria</button>
+        </div>
+    </div>
+</form>
+
+
+@Html.Partial("_Footer")
+

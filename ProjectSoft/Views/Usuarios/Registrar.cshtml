@@ -1,0 +1,210 @@
+﻿@model ProjectSoft.Models.Usuario
+@using ProjectSoft.Models.UserAccount
+@{
+    ViewData["Title"] = "Registrar";
+}
+<br />
+
+@if (LoadDataUser.Rol == "Admin")
+{
+
+    <h2 class="text-success espaciotitulo"><i class="fa fa-user-circle"></i> Agregar Nuevo Usuario</h2>
+    <h4 class="espaciotitulo">Agrega un usuario y su rol en el sistema.</h4>
+
+}
+else
+{
+    <h2 class="text-success espaciotitulo"><i class="fa fa-user-circle"></i> Registrate</h2>
+    <h4 class="espaciotitulo">Crea una cuenta para acceder a Project Soft.</h4>
+
+}
+
+
+
+<form asp-action="Registrar" asp-controller="Usuarios" method="post" enctype="multipart/form-data">
+    <br />
+
+
+    <div class="col-sm-7 espaciotitulo">
+
+        @Html.Partial("_AlertPartial")
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputEmail4" class="text-dark"> <strong> Nombre</strong> </label>
+                <input type="text" class="form-control" asp-for="Nombre" id="nombre" placeholder="Nombre">
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputPassword4" class="text-dark"><strong> Apellido</strong></label>
+                <input type="text" class="form-control" id="apellido" asp-for="Apellido" placeholder="Apellido">
+                <span asp-validation-for="Apellido" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="inputAddress" class="text-dark"><strong> Dirección</strong></label>
+            <input type="text" class="form-control" id="direccion" asp-for="Direccion" placeholder="C/Ramon Mota #478">
+            <span asp-validation-for="Direccion" class="text-danger"></span>
+        </div>
+
+
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputEmail4" class="text-dark"><strong> Télefono</strong></label>
+                <input type="tel" class="form-control" maxlength="10" id="telefono" asp-for="Telefono" placeholder="8092456211">
+                <span asp-validation-for="Telefono" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputPassword4" class="text-dark"><strong> Email</strong></label>
+                <input type="email" class="form-control" id="email" asp-for="Email" placeholder="nombre@dominio.com">
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputEmail4" class="text-dark"> <strong> Usuario</strong> (con este iniciaras sesión)</label>
+                <input type="text" class="form-control" id="user" asp-for="UserAccount" placeholder="Usuario">
+                <span asp-validation-for="UserAccount" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputPassword4" class="text-dark"> <strong> Contraseña</strong></label>
+                <input type="password" class="form-control" id="password" asp-for="Password">
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-row">
+
+            <div class="form-group col-md-6">
+                <label class="text-dark"><strong> <i class="fa fa-upload"></i> Foto</strong></label>
+                <input type="file" name="img" class="form-control" />
+                <label class="text-info">Limite de peso: <strong>3 Mb -pgn, jpg, jpeg-</strong></label>
+
+            </div>
+
+            @if (LoadDataUser.Rol == "Admin")
+            {
+
+                <div class="form-group col-md-6">
+                    <label class="text-dark"><strong> Seleccione el Rol de Usuario</strong></label>
+                    <select class="form-control" name="rol">
+
+                        <option>Usuario Común</option>
+                        <option>Admin</option>
+
+                    </select>
+
+                </div>
+
+            }
+
+
+        </div>
+
+    </div>
+    <div class="form-group espaciotitulo">
+        <div class="form-check">
+
+            <label class="form-check-label" for="gridCheck">
+                <span class="text-danger"> Al registrarte aceptas los.</span> <a class="text-info">Terminos y Condiciones</a>
+            </label>
+        </div>
+    </div>
+    <button type="submit" id="btnregistrar" class="btn btn-lg btn-primary espaciotitulo"> <i class="fa fa-check"></i> Registrar  <i class="fa fa-spinner fa-spin fa-2x fa-fw" id="load"></i> </button>
+
+    <span class="sr-only"><a>Loading...</a></span>
+
+
+
+
+
+</form>
+
+<!-- Button trigger modal
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    Launch demo modal
+</button>
+-->
+<script src="~/js/Registro.js"></script>
+<!-- Modal -->
+<!--<div class="modal fade col-sm-12" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog col-sm-12" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body col-sm-12">
+                <form method="post">
+
+
+                    <div class="col-sm-12" style="padding:0px; margin:0px; margin-top:30px;">
+
+
+                        <div class="col-sm-12">
+                            <center>
+                                <img src="~/images/LOGO.PNG" class="text-center" style="width:10%; border-radius:20px;" />
+                                <h1 class="text-center">Iniciar Sesión</h1>
+
+                                <div asp-validation-summary="All" class="text-danger text-center"></div>
+                                <div class="form-group col-sm-4 col-lg-offset-4">
+                                    <input type="text" class="form-control" placeholder="Correo Electronico" />
+                                    <span></span>
+
+                                </div>
+
+                                <div class="form-group col-sm-4 col-lg-offset-4">
+
+                                    <input type="password" class="form-control" placeholder="Contraseña" />
+                                    <span></span>
+                                </div>
+
+                                <div class="form-group col-sm-4 col-lg-offset-4">
+
+                                    <button type="submit" class="btn btn-primary form-control">Acceder</button>
+
+                                </div>
+
+                                <div class="form-group col-sm-4 col-lg-offset-4">
+
+                                    <a>No tienes cuenta? </a> <span> <strong> <a asp-action="Registrar" asp-controller="Usuarios">Registrate Aquí</a> </strong> </span>
+
+                                </div>
+
+                                <div class="form-group col-sm-4 col-lg-offset-4">
+
+
+                                    <a asp-action="ForgotPassword">He olvidado mi contraseña</a>
+
+                                </div>
+
+
+
+
+                            </center>
+
+                        </div>
+
+                    </div>
+
+
+
+
+
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+    -->
+@Html.Partial("_Footer")

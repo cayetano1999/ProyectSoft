@@ -1,0 +1,18 @@
+﻿@model ProjectSoft.Models.ProyectosModel.ProyectoFile
+@{
+    ViewData["Title"] = "DescargarProyecto";
+}
+
+
+
+
+<center>
+
+    <embed src="~/Proyectos/@Model.ArchivoRar" class="embed-responsive" />
+
+
+    <h2>Proyecto Descargado</h2>
+
+</center>
+
+@Html.Partial("_Footer")

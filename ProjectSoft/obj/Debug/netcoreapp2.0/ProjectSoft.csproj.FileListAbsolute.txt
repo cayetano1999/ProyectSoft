@@ -1,0 +1,11 @@
+C:\Proyectos ASP MVC\ProjectSoft\ProjectSoft\bin\Debug\netcoreapp2.0\ProjectSoft.deps.json
+C:\Proyectos ASP MVC\ProjectSoft\ProjectSoft\bin\Debug\netcoreapp2.0\ProjectSoft.runtimeconfig.json
+C:\Proyectos ASP MVC\ProjectSoft\ProjectSoft\bin\Debug\netcoreapp2.0\ProjectSoft.runtimeconfig.dev.json
+C:\Proyectos ASP MVC\ProjectSoft\ProjectSoft\bin\Debug\netcoreapp2.0\ProjectSoft.dll
+C:\Proyectos ASP MVC\ProjectSoft\ProjectSoft\bin\Debug\netcoreapp2.0\ProjectSoft.pdb
+C:\Proyectos ASP MVC\ProjectSoft\ProjectSoft\obj\Debug\netcoreapp2.0\ProjectSoft.csprojAssemblyReference.cache
+C:\Proyectos ASP MVC\ProjectSoft\ProjectSoft\obj\Debug\netcoreapp2.0\ProjectSoft.csproj.CoreCompileInputs.cache
+C:\Proyectos ASP MVC\ProjectSoft\ProjectSoft\obj\Debug\netcoreapp2.0\ProjectSoft.AssemblyInfoInputs.cache
+C:\Proyectos ASP MVC\ProjectSoft\ProjectSoft\obj\Debug\netcoreapp2.0\ProjectSoft.AssemblyInfo.cs
+C:\Proyectos ASP MVC\ProjectSoft\ProjectSoft\obj\Debug\netcoreapp2.0\ProjectSoft.dll
+C:\Proyectos ASP MVC\ProjectSoft\ProjectSoft\obj\Debug\netcoreapp2.0\ProjectSoft.pdb

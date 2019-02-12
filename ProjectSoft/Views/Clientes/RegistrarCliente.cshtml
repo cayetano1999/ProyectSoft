@@ -1,0 +1,136 @@
+﻿@model ProjectSoft.Models.Clientes.Cliente
+@{
+    ViewData["Title"] = "Registrar Cliente";
+}
+
+
+<div class=" col-sm-12 portada portadacontainer">
+    <br />
+    <h2 class="text-center"><i class="fa fa-user-plus"></i> Registro de Clientes</h2>
+    <p class="text-center text-info">Agrega nuevos clientes al sistema.</p>
+
+</div>
+<br />
+<form asp-action="RegistrarCliente" asp-controller="Clientes" method="post" enctype="multipart/form-data">
+    <br />
+    <center>
+        <div class="col-sm-8 espaciotitulo" style="background-color:white; border-radius:10px; box-shadow:initial; border-top: 2px solid #424242; border-bottom: 2px solid #424242;">
+
+            @Html.Partial("_AlertPartial")
+
+            <br />
+
+            <img src="~/FotosPerfil/Userdefault.png" class="embed-responsive" style="width:10%" />
+            <br />
+            <div class="form-row">
+                <div class="form-group col-md-6">
+
+                    <label for="inputEmail4" class="text-dark"> <strong> Naturaleza del Cliente</strong> </label>
+
+                    <select asp-for="Naturaleza" class="form-control border-info">
+
+                        <option>
+                            Seleccione...
+                        </option>
+
+
+                        <option>
+                            Empresa
+                        </option>
+
+
+
+                        <option>
+                            Usuario Común
+                        </option>
+
+                    </select>
+                    <span asp-validation-for="Naturaleza"  class="text-danger"></span>
+
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputPassword4" class="text-dark"><strong> Nombre</strong></label>
+                    <input asp-for="Nombre" type="text" class="form-control border-info border-info" id="Nombre" placeholder="Nombre">
+                    <span asp-validation-for="Nombre"  class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="inputAddress" class="text-dark"><strong> Dirección</strong></label>
+                <input asp-for="Direccion" type="text" class="form-control border-info text-dark" id="direccion" placeholder="C/Ramon Mota #478">
+                <span asp-validation-for="Direccion"  class="text-danger"></span>
+            </div>
+
+
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputEmail4" class="text-dark"><strong> Télefono</strong></label>
+                    <input asp-for="Telefono" type="tel" class="form-control border-info" maxlength="10" id="telefono" placeholder="8092456211">
+                    <span asp-validation-for="Telefono"  class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputPassword4" class="text-dark"><strong> Email</strong></label>
+                    <input asp-for="Email" type="email" class="form-control border-info" id="email" placeholder="nombre@dominio.com">
+                    <span asp-validation-for="Email"  class="text-danger"></span>
+                </div>
+            </div>
+
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputPassword4" class="text-dark"><strong> Identificación</strong></label>
+                    <input asp-for="Identificacion" maxlength="10" class="form-control border-info" placeholder="">
+                    <span asp-validation-for="Identificacion"   class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputPassword4" class="text-dark"><strong> Tipo de Cliente</strong></label>
+                    <select asp-for="TipoCliente" class="form-control border-info">
+
+                        <option>Seleccione...</option>
+                        <option>Constante</option>
+                        <option>Temporal</option>
+
+
+                    </select>
+                    <span asp-validation-for="TipoCliente"  class="text-danger"></span>
+
+                </div>
+            </div>
+
+
+            <div class="form-row">
+
+
+                
+
+                <div class="form-group col-md-6">
+                    <label class="text-dark"><strong> <i class="fa fa-upload"></i> Foto</strong></label>
+                    <input type="file" name="img" class="form-control border-info" />
+                    <label class="text-info">Limite de peso: <strong>3 Mb -pgn, jpg, jpeg-</strong></label>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+        <div class="form-group espaciotitulo">
+            <div class="form-check">
+
+                
+            </div>
+        </div>
+        <button type="submit" id="btnregistrar" class="btn btn-lg btn-primary espaciotitulo"> <i class="fa fa-check"></i> Registrar  </i> </button>
+
+        <!--- <span class="sr-only"><a>Loading...</a></span>-->
+
+    </center>
+
+
+
+</form>
+
+@Html.Partial("_Footer" +
+    "");

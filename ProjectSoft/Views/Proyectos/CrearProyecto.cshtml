@@ -1,0 +1,352 @@
+﻿@model ProjectSoft.ViewModels.ProyectoViewModel
+@using ProjectSoft.Models.UserAccount
+@{
+    ViewData["Title"] = "CrearProyecto";
+}
+
+<div class=" col-sm-12 portada portadacontainer">
+    <br />
+    <h2 class="text-center"><i class="fa fa-plus-circle"></i> Agregar Proyecto</h2>
+    <p class="text-center text-info">Registra un nuevo proyecto en el sistema.</p>
+</div>
+<br />
+
+
+
+
+<center>
+
+
+    <table class="table-responsive-lg espaciotitulo">
+
+        <tr class="espaciotabla">
+            <td>
+                <a id="info" class="btn btn-md btn-info espaciotabla textoblanco"> <i class="fa fa-info"></i> Información del Proyecto</a>
+            </td>
+
+            <td>
+                <a id="foto" class="btn btn-md btn-success espaciotabla textoblanco"><i class="fa fa-picture-o"></i> ScreenShots del Proyecto</a>
+            </td>
+
+            
+
+        </tr>
+
+    </table>
+
+
+    <br />
+
+    <form asp-action="CrearProyecto" asp-controller="Proyectos" method="post" enctype="multipart/form-data">
+
+
+
+        <div class="col-sm-10 espaciotitulo divproyecto" id="divinfo">
+
+
+            <div>
+                <br />
+                <h3 class="text-info"><i class="fa fa-info-circle"></i> Información del Proyecto</h3>
+                <h6>Completa correctamente el formulario.</h6>
+                <br />
+                @Html.Partial("_AlertPartial")
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="inputEmail4" class="text-dark"> <strong> Nombre del Proyecto</strong> </label>
+                        <input type="text" asp-for="ProyectoInfo.Nombre" class="form-control" id="nombre" placeholder="Nombre del Proyecto">
+                        <span asp-validation-for="ProyectoInfo.Nombre" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputPassword4" class="text-dark"><strong> Creador del Proyecto</strong></label>
+                        <input type="text" asp-for="ProyectoInfo.Creador" class="form-control" id="apellido" placeholder="Creador del Proyecto">
+                        <span asp-validation-for="ProyectoInfo.Creador" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group col-md-4">
+                        <label for="inputEmail4" class="text-dark"><strong> Seleccione el Cliente</strong></label>
+
+
+                        <select asp-for="ProyectoInfo.Id_Cliente" asp-items="@(new SelectList(Model.Listaclientes,"Id","Nombre"))" class="form-control">
+
+                            <option>Seleccione...</option>
+
+                        </select>
+
+                    </div>
+
+
+                </div>
+
+                <div class="form-row">
+
+
+                    <div class="form-group col-md-4">
+                        <label for="inputPassword4" class="text-dark"><strong> Costo del Proyecto</strong></label>
+                        <input type="number" asp-for="ProyectoInfo.Costo" class="form-control" placeholder="0.00">
+                        <span asp-validation-for="ProyectoInfo.Costo" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group col-md-4">
+                        <label for="inputEmail4" class="text-dark"> <strong> Categoria del Proyecto</strong></label>
+
+                        <select asp-for="ProyectoInfo.Id_Categoria" asp-items="@(new SelectList(Model.Listacategorias,"Id","Nombre"))" class="form-control">
+
+                            <option>Seleccione...</option>
+                        </select>
+
+                    </div>
+
+                    <div class="form-group col-md-4">
+                        <label for="inputPassword4" class="text-dark"> <strong> UpLoader</strong></label>
+                        <input type="text" asp-for="ProyectoInfo.UpLoader" class="form-control" readonly value="@LoadDataUser.UserAccount">
+                        <span asp-validation-for="ProyectoInfo.UpLoader" class="text-danger"></span>
+                    </div>
+
+                </div>
+
+
+
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="inputEmail4" class="text-dark"> <strong> Tiempo de Duración</strong></label>
+                        <input type="text" asp-for="ProyectoInfo.Duracion" class="form-control">
+                        <span asp-validation-for="ProyectoInfo.Duracion" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group col-md-4">
+                        <label class="text-dark"><strong> <i class="fa fa-upload"></i> Logo del Proyecto</strong></label>
+                        <input type="file" name="LogoProyecto" class="form-control" />
+
+                    </div>
+
+                    <div class="form-group col-md-4">
+                        <label for="inputEmail4" class="text-dark"> <strong> Identificación del Proyecto</strong></label>
+                        <input asp-for="ProyectoInfo.Identificacion" class="form-control" maxlength="10" min="10" placeholder="Identifiación" />
+                        <span asp-validation-for="ProyectoInfo.Identificacion" class="text-danger"></span>
+
+
+                    </div>
+
+                </div>
+
+                <div class="form-row">
+
+
+                    <div class="form-group col-md-4">
+                        
+
+                    </div>
+
+
+                    <div class="form-group col-md-4">
+
+                        <label for="inputEmail4" class="text-dark"> <strong> Breve Descripción del Proyecto</strong></label>
+                        <textarea asp-for="ProyectoInfo.Descripcion" class="form-control" maxlength="100" placeholder="Brebe descripción del Proyecto" style="width:100%; height:200px;">
+
+                        </textarea>
+                        <span asp-validation-for="ProyectoInfo.Descripcion" class="text-danger"></span>
+                    </div>
+
+                </div>
+
+                <a class="btn btn-md btn-secondary" id="btnsiguienteinfo" style="color:white"> <i class="fa fa-hand-o-right"></i> Continuar</a> 1/3
+
+                <br />
+            </div>
+
+            <br />
+
+
+
+
+
+        </div>
+
+        <div class="col-sm-10 espaciotitulo divproyecto" id="divfotos">
+
+            <div>
+                <br />
+                <h3 class="text-info"><i class="fa fa-picture-o"></i> 3 Screenshots del Proyecto</h3>
+                <h6>Selecciona 3 screenshots del proyecto a subir.</h6>
+                <br />
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label class="text-dark"><strong> <i class="fa fa-file-photo-o"></i> Screen 1</strong></label>
+                        <input type="file"  name="Screen1" class="form-control" />
+
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label class="text-dark"><strong> <i class="fa fa-file-photo-o"></i> Screen 2</strong></label>
+                        <input type="file"  name="Screen2" class="form-control" />
+
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label class="text-dark"><strong> <i class="fa fa-file-photo-o"></i> Screen 3</strong></label>
+                        <input type="file"  name="screen3" class="form-control" />
+
+                    </div>
+
+                </div>
+                <a class="btn btn-md btn-secondary" id="btnsiguientefoto" style="color:white"> <i class="fa fa-hand-o-right"></i> Continuar</a> 2/3
+
+
+                <br />
+
+
+            </div>
+            <br />
+
+        </div>
+
+        <div class="col-sm-10 espaciotitulo divproyecto" id="divarchivos">
+
+            <div>
+                <br />
+                <h3 class="text-info"><i class="fa fa-file-zip-o"></i> Subir .rar del Proyecto y Contrato</h3>
+                <h6>Selecciona el .rar del proyecto y el contrato .pdf</h6>
+                <br />
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label class="text-dark"><strong> <i class="fa fa-file-zip-o"></i> Archivo .rar</strong></label>
+                        <input type="file"  name="ArchivoRar" class="form-control" />
+
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="text-dark"><strong> <i class="fa fa-file-pdf-o"></i> Contrato .pdf</strong></label>
+                        <input type="file"  name="Contrato" class="form-control" />
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+            <br />
+
+            <a id="btnregistrar" class="btn btn-lg btn-primary espaciotitulo" data-toggle="modal" data-target="#exampleModalCenter"> <i class="fa fa-check"></i> Registrar   </a>
+            
+            <br />
+            <br />
+        </div>
+
+
+
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle"><i class="fa fa-check-square"></i> Confirmación de Envio</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+
+
+                        <h5 class="text-success text-center">Seguro que desea enviar el formulario del proyecto?</h5>
+                        <br />
+                        <div class="alert alert-info">
+                            <strong>Nota:</strong> Si el formualrio contiene datos no validos tendra que retrodeceder a dicha parte del formulario.
+                            Revise correctamente el formulario antes de enviar.
+                        </div>
+
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal"> <i class="fa fa-close"></i> Cancelar</button>
+                            <button type="submit" class="btn btn-primary"> <i class="fa fa-check-circle-o"></i> Enviar</button>
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+    </form>
+
+</center>
+
+<script>
+
+
+    var divinfo = document.getElementById("divinfo");
+    var divfotos = document.getElementById("divfotos");
+    var divarchivo = document.getElementById("divarchivos");
+
+    var btninfo = document.getElementById("info");
+    var btnfoto = document.getElementById("foto");
+
+
+    btninfo.style.display = 'none';
+    btnfoto.style.display = 'none';
+
+
+   
+
+
+    //BOTONES
+
+    var btnsiguienteinfo = document.getElementById("btnsiguienteinfo").addEventListener("click", function clickinfo() {
+
+
+
+        divinfo.style.display = 'none';
+        divfotos.style.display = 'block';
+
+
+        btninfo.style.display = 'block';
+        btninfo.style.color = '#FFF';
+
+
+    });
+
+
+    var btnsiguienteinfo = document.getElementById("btnsiguientefoto").addEventListener("click", function clickfoto() {
+
+        
+        divfotos.style.display = 'none'
+        divarchivo.style.display = 'block';
+
+
+        btnfoto.style.display = 'block';
+        btnfoto.style.color = '#FFF';
+
+    });
+
+
+    btninfo.addEventListener("click", function clickinfobtn() {
+
+
+        divinfo.style.display = 'block';
+
+        divfotos.style.display = 'none'; 
+        divarchivo.style.display = 'none';
+        btninfo.style.display = 'none';
+        btnfoto.style.display = 'none';
+
+    });
+
+
+
+    btnfoto.addEventListener("click", function clickfotobtn() {
+
+
+        divinfo.style.display = 'none';
+        divfotos.style.display = 'block';
+        divarchivo.style.display = 'none';
+        btninfo.style.display = 'block';
+        btnfoto.style.display = 'none';
+
+
+    });
+
+
+    divfotos.style.display = 'none';
+    divarchivo.style.display = 'none';
+
+</script>
+
+@Html.Partial("_Footer")

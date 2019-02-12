@@ -1,0 +1,204 @@
+﻿@model ProjectSoft.ViewModels.ProyectoViewModel
+@using ProjectSoft.Models.UserAccount
+@{
+    ViewData["Title"] = "Proyectos";
+}
+<div class=" col-sm-12 portada portadacontainer">
+    <br />
+    <h2 class="text-center"><i class="fa fa-folder"></i> Proyectos</h2>
+    <p class="text-center text-info">Administra todo lo relacionado a los proyectos.</p>
+</div>
+<br />
+<div class="col-sm-12" style="background-color:#FAFAFA; border-radius:20px; ">
+    <br /> 
+    <form asp-action="Index" asp-controller="Proyectos">
+        <div class="form-row well">
+            <table class="espaciotitulo table-responsive-lg">
+                <tr>
+                    <td>
+                        <a id="btnproyecto" class="btn btn-md btn-primary espaciotabla" style="color:white;" asp-action="CrearProyecto" asp-controller="Proyectos"><i class="fa fa-plus"></i>&nbsp; Agregar Proyecto</a>
+                    </td>
+                    <td>
+                        <a class="btn btn-md btn-dark espaciotabla" style="color:white;" asp-action="Categoria" asp-controller="Proyectos"><i class="fa fa-cog"></i> Categorias de Proyectos</a>
+                    </td>
+
+                    
+
+
+                    
+                </tr>
+            </table>
+
+
+
+            <div class="form-group col-md-3" style="margin-left:30px;">
+                <input type="text" class="form-control" name="busqueda" id="Nombre" placeholder="Nombre del Proyecto">
+            </div>
+
+            <div class="form-group col-md-3">
+                <button class="btn btn-md btn-primary"> <i class="fa fa-search"></i> Buscar</button>
+            </div>
+            </div>
+    </form>
+
+    </div>
+
+
+<hr />
+<div class="col-sm-12" id="tabla">
+
+    <div class="col-sm-12 ">
+
+        <table class=" table table-hover tablacliente table-responsive-lg ">
+
+            <tr>
+                <th>
+                </th>
+
+                <th>
+                    Nombre
+                </th>
+
+                <th>
+                    Cliente
+                </th>
+                <th>
+                    Creador del Proyecto
+                </th>
+                <th>
+                    Costo
+                </th>
+                <th>
+                    Categoria
+                </th>
+
+                <th>
+                    UpLoader
+                </th>
+
+                <th class="text-center">
+                    Acciones
+                </th>
+            </tr>
+           
+            @foreach (var item in Model.proyectos)
+            {
+                @if (item.Estado != "Eliminado") { 
+                <tr>
+                    <td>
+                        
+                    </td>
+
+                    <td>
+                        <img src="~/FotosProyectos/@item.ProyectoImg.LogoProyecto" style="width:40px; border-radius:100px;" /> @Html.DisplayFor(m => item.Nombre)
+                    </td>
+
+                    <td>
+
+                        @if (item.Cliente.Estado == "Eliminado")
+                        {
+                            <a class="text-danger"> <i class="fa fa-remove"></i> @Html.DisplayFor(m => item.Cliente.Nombre)</a>
+                        }
+                        else
+                        {
+                            <a asp-action="Detalles" asp-controller="Clientes" asp-route-Id="@item.Cliente.Id">@Html.DisplayFor(m => item.Cliente.Nombre)</a>
+                        }
+
+                        
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => item.Creador)
+                    </td>
+                    <td>
+                        @Convert.ToDouble(item.Costo).ToString("N") RD$
+                    </td>
+                    <td>
+                        @if (item.Categoria.Estado == "Eliminada")
+                        {
+                        <a class="text-danger"> <i class="fa fa-remove"></i> @Html.DisplayFor(m => item.Categoria.Nombre)</a>
+                        }
+                        else
+                        {
+                            @Html.DisplayFor(m => item.Categoria.Nombre)
+                        }
+
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => item.UpLoader)
+                    </td>
+                    <td>
+                        <center>
+                            <a class="btn btn-sm btn-success" asp-controller="Proyectos" asp-action="Detalles" asp-route-Id="@item.Id">
+                                <i class="fa fa-info-circle" style="color:white"></i>
+                            </a>
+                            <a class="btn btn-sm btn-primary" asp-controller="Proyectos" asp-action="Editar" asp-route-Id="@item.Id">
+                                <i class="fa fa-pencil" style="color:white"></i>
+                            </a>
+                            <a class="btn btn-sm btn-danger" asp-controller="Proyectos" asp-action="Eliminar" asp-route-Id="@item.Id">
+                                <i class="fa fa-trash" style="color:white"></i>
+                            </a>
+
+                            <a class="btn btn-sm btn-secondary" asp-controller="Proyectos" asp-action="DescargarProyecto" asp-route-archivo="@item.ProyectoFl.ArchivoRar">
+                                <i class="fa fa-download" style="color:white"></i>
+                            </a>
+                            <a class="btn btn-sm btn-info" asp-controller="Proyectos" asp-action="Enviar" asp-route-Id="@item.Id">
+                                <i class="fa fa-share" style="color:white"></i>
+                            </a>
+                        </center>
+                    </td>
+                </tr>
+                }
+
+            }
+            
+
+            
+
+
+        </table>
+
+        @if (Model.proyectos.Count() == 0)
+        {
+
+            <div class="alert alert-info">
+
+                No hay proyectos a mostrar <a class="text-dark" asp-action="CrearProyecto" asp-controller="Proyectos"> <strong> <i class="fa fa-plus-circle"></i> Agrega un proyecto nuevo </strong></a>
+
+            </div>
+
+        }
+
+    </div>
+
+    
+    <center>
+
+        <h3>Leyenda</h3>
+
+        <a class="btn btn-sm btn-success">
+            <i class="fa fa-info-circle" style="color:white"></i> Información
+        </a>
+        <a class="btn btn-sm btn-primary">
+            <i class="fa fa-pencil" style="color:white"></i> Editar
+        </a>
+        <a class="btn btn-sm btn-danger">
+            <i class="fa fa-trash" style="color:white"></i> Eliminar
+        </a>
+
+        <a class="btn btn-sm btn-secondary">
+            <i class="fa fa-download" style="color:white"></i> Descargar
+        </a>
+        <a class="btn btn-sm btn-info" >
+            <i class="fa fa-share" style="color:white"></i> Compartir
+        </a>
+
+    </center>
+
+</div>
+
+
+
+
+
+<script src="~/js/Proyecto.js"></script>
+@Html.Partial("_Footer")

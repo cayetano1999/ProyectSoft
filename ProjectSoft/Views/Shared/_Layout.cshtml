@@ -1,0 +1,135 @@
+﻿
+@{ 
+    @using ProjectSoft.Models.UserAccount
+    @using ProjectSoft.Models
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ProjectSoft</title>
+
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+        <link rel="stylesheet" type="text/css" href="~/lib/fontawesome/css/font-awesome.css">
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark fixed-top">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="true" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+        
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+            <a class="navbar-brand btn-primary" asp-action="Index" asp-controller="Home" style="color:#fff; border-radius:6px;">| Project-Soft |</a>
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+
+                @if (UserLogin.Islogin == true)
+                {
+
+
+                    <li class="nav-item">
+                        <a class="nav-link opciones btn-dark" style="color:#fff;" asp-action="Index" asp-controller="Home"><i class="fa fa-home" aria-hidden="true"></i> Inicio</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" style="color:#fff;" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" > <i class="fa fa-folder" aria-hidden="true"></i> Proyectos</a>
+
+                        
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+
+                            <a id="btnproyecto" class="dropdown-item" asp-action="Index" asp-controller="Proyectos"><i class="fa fa-list-alt"></i>&nbsp; Ver Proyectos</a>
+
+                            <a id="btnproyecto" class="dropdown-item" asp-action="CrearProyecto" asp-controller="Proyectos"><i class="fa fa-plus"></i>&nbsp; Agregar Proyecto</a>
+
+                            <a class="dropdown-item" asp-action="Categoria" asp-controller="Proyectos"><i class="fa fa-cog"></i> Categorias de Proyectos</a>
+
+                            <a class="dropdown-item" asp-action="ProyectosEliminados" asp-controller="Proyectos"><i class="fa fa-recycle"></i> Proyectos Eliminados</a>
+
+                        </div>
+
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link opciones btn-dark" style="color:#fff;" asp-action="Index" asp-controller="Clientes"> <i class="fa fa-users" aria-hidden="true"></i> Clientes</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link opciones btn-dark" style="color:#fff;" asp-action="AdmUsuarios" asp-controller="Usuarios"> <i class="fa fa-user" aria-hidden="true"></i> Usuarios</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link opciones btn-dark" style="color:#fff;" href="#"> <i class="fa fa-file" aria-hidden="true"></i> Informes</a>
+                    </li>
+                }
+            </ul>
+            <form class="form-inline my-2 my-lg-0" asp-action="Logout" asp-controller="Usuarios" method="post">
+                @if (UserLogin.Islogin == true)
+                {
+                    <a class="btn btn-dark my-2 my-sm-0 espacio" asp-action="Registrar" asp-controller="Usuarios"><i class="fa fa-user-circle"></i> @LoadDataUser.UserAccount</a>
+
+                    
+
+
+                    <a class="btn btn-dark my-2 my-sm-0 espacio" asp-action="Logout" asp-route-id="@LoadDataUser.Id" asp-controller="Usuarios"><i class="fa fa-sign-out"></i>Salir</a>
+
+                    
+
+
+                }
+                else
+                {
+                    <a class="btn btn-dark my-2 my-sm-0 espacio" asp-action="Registrar" asp-controller="Usuarios"><i class="fa fa-user-circle"></i> Registrate</a>
+                    <a class="btn btn-success my-2 my-sm-0 espacio" asp-action="LoginUser" asp-controller="Usuarios"><i class="fa fa-sign-in"></i>  Acceder</a>
+
+                }
+                <span></span>
+
+
+            </form>
+        </div>
+    </nav>
+
+   
+
+
+    <div class="*">
+        @RenderBody()
+
+    </div>
+
+    <environment include="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous"
+                integrity="sha384-K+ctZQ+LL8q6tP7I94W+qzQsfRV2a+AfHIi9k8z8l9ggpc8X+Ytst4yBo/hH+8Fk">
+        </script>
+        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                crossorigin="anonymous"
+                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
+        </script>
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+    </environment>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

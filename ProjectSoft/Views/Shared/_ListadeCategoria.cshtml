@@ -1,0 +1,97 @@
+﻿@model ProjectSoft.ViewModels.CategoriaViewModel
+
+<div class="col-sm-12">
+
+
+    <div class="col-sm-12 ">
+
+
+        <table class=" table table-hover tablacliente table-responsive-lg table ">
+
+
+            <tr>
+
+
+
+                <th>
+                    Id
+                </th>
+
+                <th>
+                    Categoria
+                </th>
+
+                <th>
+                    Fecha de Creación
+                </th>
+
+                <th>
+                    Usuario
+                </th>
+
+
+                <th class="text-center">
+                    Acciones
+                </th>
+
+            </tr>
+
+            @foreach (var item in Model.Categorias)
+            {
+                <tr>
+
+                    <td>
+                       @Html.DisplayFor(m=>item.Id)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(m=>item.Nombre)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(m=>item.Fecha)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(m=>item.Usuario)
+                    </td>
+
+                    
+
+                    <td>
+                        <form>
+                            <center>
+                                
+
+                                <a class="btn btn-sm btn-primary" asp-controller="Proyectos" asp-action="EditarCategoria" asp-route-Id="@item.Id">
+                                    <i class="fa fa-pencil" style="color:white"></i> Editar
+                                </a>
+
+
+
+                                <a class="btn btn-sm btn-danger" asp-controller="Proyectos" asp-action="EliminarCategoria" asp-route-Id="@item.Id">
+                                    <i class="fa fa-trash" style="color:white"></i> Eliminar
+                                </a>
+
+
+                            </center>
+                        </form>
+
+                    </td>
+
+                </tr>
+
+            }
+
+
+
+
+
+        </table>
+
+
+
+    </div>
+</div>
+
+

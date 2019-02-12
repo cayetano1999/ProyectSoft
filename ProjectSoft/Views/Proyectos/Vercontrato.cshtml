@@ -1,0 +1,18 @@
+﻿@model ProjectSoft.Models.ProyectosModel.ProyectoFile
+@{
+    ViewData["Title"] = "Ver contrato";
+}
+
+<br />
+<h2 class="text-center text-info">Contrato del Proyecto</h2>
+
+
+
+<center>
+
+    <embed src="~/Contratos/@Model.Contrato" style="width:100%; height:1000px;" class="embed-responsive" />
+
+</center>
+
+
+@Html.Partial("_Footer")

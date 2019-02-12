@@ -1,0 +1,91 @@
+﻿@model ProjectSoft.Models.Usuario
+@{
+    ViewData["Title"] = "Editar";
+}
+
+<center>
+    <form asp-action="RegistrarCliente" asp-controller="Clientes" class="disabled" method="post" enctype="multipart/form-data">
+        <br />
+
+        <div class="col-sm-8 espaciotitulo" style="background-color:white; border-radius:0px; box-shadow:initial; border-top: 5px solid #424242; border-bottom: 5px solid #424242;">
+            <center>
+                @Html.Partial("_AlertPartial")
+
+                <br />
+
+                <img src="~/FotosPerfil/@Model.Foto" style="width:10%; border-radius:100px;" class="embed-responsive" />
+
+                <br />
+
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+
+                        <label for="inputEmail4" class="text-dark"> <strong> Nombre</strong> </label>
+
+                        <input asp-for="@Model.Nombre" disabled class="form-control border-info disabled" />
+
+
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputPassword4" class="text-dark"><strong> Apellido</strong></label>
+                        <input asp-for="@Model.Apellido" disabled type="text" class="form-control border-info border-info disabled" id="Nombre" placeholder="Nombre">
+
+                    </div>
+                </div>
+
+
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+
+                        <label for="inputEmail4" class="text-dark"> <strong> Dirección</strong> </label>
+
+                        <input asp-for="@Model.Direccion" disabled class="form-control border-info disabled" />
+
+
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputPassword4" class="text-dark"><strong> Telefono</strong></label>
+                        <input asp-for="@Model.Telefono" disabled type="text" class="form-control border-info border-info disabled" id="Nombre" placeholder="Nombre">
+
+                    </div>
+                </div>
+
+
+
+
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputEmail4" class="text-dark"><strong> Usuario</strong></label>
+                        <input asp-for="@Model.UserAccount" disabled type="tel" class="form-control border-info disabled" maxlength="10" id="telefono" placeholder="8092456211">
+
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputPassword4" class="text-dark"><strong> Estado</strong></label>
+                        <input asp-for="@Model.Estado" disabled type="email" class="form-control border-info disabled" id="email" placeholder="nombre@dominio.com">
+
+                    </div>
+                </div>
+
+
+
+
+            </center>
+           
+        </div>
+
+
+
+
+
+
+
+    </form>
+    <br />
+
+</center>
+@Html.Partial("_Footer");
+
+
